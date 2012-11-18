@@ -1,0 +1,41 @@
+upstream redwire{
+    server 127.0.0.1:8080;
+}
+
+server {
+    listen 80;
+    listen 8000;
+    listen 8005 default_server; # This is for the ELB health check
+    server_name dev.redwire.sg
+
+    access_log  /var/log/nginx/redwire.ssl.access.log;
+    error_log   /var/log/nginx/redwire.error.log;
+
+    keepalive_timeout 120;
+
+    root /home/aesir/projects/hackathon/;
+
+    location /static {
+        autoindex on;
+        alias /home/aesir/projects/hackathon/static/;
+        expires max;
+        access_log off;
+    }
+
+    location /robots.txt {
+        alias /home/aesir/projects/hackathon/static/robots.txt;
+    }
+
+    location /favicon.ico {
+        alias /home/aesir/projects/hackathon/static/favicon.ico;
+        expires max;
+    }
+
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+
+    location / {
+        proxy_pass http://redwire;
+    }
+}
