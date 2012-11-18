@@ -21,6 +21,8 @@ Virtualenvwrapper
     cd $PROJECT_HOME
     # Get the code
     git clone git@github.com:yarbelk/redwire.git redwire
+    git submodule init
+    git submodule update
     mkdir {db,tmp}
 
 
