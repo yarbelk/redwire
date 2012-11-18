@@ -6,7 +6,7 @@ PROJECT_ROOT = path(__file__).abspath().dirname().dirname().dirname()
 SITE_ROOT = PROJECT_ROOT.dirname()
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('James', 'james@redwire.sg'),
 )
 
 MANAGERS = ADMINS
@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'south',
     'compressor',
+    'gunicorn',
 )
 
 COMPRESS_PRECOMPILERS = (
