@@ -4,48 +4,85 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <link href='https://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
       {% compress css %}
       <link type="text/less" rel="stylesheet" href="{% static 'bootstrap/less/bootstrap.less' %}">
+      <style>
+        html, body {
+          height:100%;
+        }
+        .container {
+          min-height:100%;
+        }
+        footer .sponsors {
+          position: relative;
+          margin-top: -150px;
+          height: 150px;
+          clear: both;
+          padding-top: 20px;
+        }
+        nav {
+          margin-top: 30px;
+        }
+        .logo {
+          max-width: 64px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 10px;
+          display: block;
+        }
+        .redwire {
+          font-family: 'Share Tech Mono', sans-serif;
+        }
+      </style>
       {% endcompress %}
     {% block head %}
       <title>RedWire</title>
     {% endblock %}
   </head>
   <body>
-      <div>
+      <div class="container span12">
         <div class="row">
-            <div class="span10 offset1">
     {% block title %}
-                <h1>Super Blah Header</h1>
+    <div class="span2 offset1">
+      <a href="{% url 'index' %}" target="_top"><img class="logo" src="{% static 'img/logo.png' %}"></a>
+    </div>
+    <div class="span8 offset1">
+      <h1 class="redwire">RedWire</h1>
+    </div>
     {% endblock title %}
-            </div>
         </div>
         <div class="row">
-            <div class="span2">
+            <div class="span2 offset1">
                 <nav>
                 <ul class="nav nav-tabs nav-stacked">
-                  <li {% if params.active_view == 'index' %} class="active" {% endif %}><a href="{% url 'index' %}">Home</a></li>
-                    <li {% if params.active_view == 'location' %} class="active" {% endif %}><a href="{% url 'location' %}">Location</a></li>
-                    <li {% if params.active_view == 'contact' %} class="active" {% endif %}><a href="{% url 'contact' %}">Contact</a></li>
+                  <li {% if params.active_view == 'index' %} class="active" {% endif %}><a href="{% url 'index' %}" target="_top">Home</a></li>
+                  <li {% if params.active_view == 'location' %} class="active" {% endif %}><a href="{% url 'location' %}" target="_top">Location</a></li>
+                  <li {% if params.active_view == 'contact' %} class="active" {% endif %}><a href="{% url 'contact' %}" target="_top">Connect</a></li>
+                </ul>
+                <ul class="nav nav-tabs nav-stacked">
+                  <li><a href="http://www.eventbrite.sg/event/4847602309?ref=ebtnebregn" target="_blank">Register Now</a></li>
                 </ul>
                 </nav>
             </div>
-            <div class="span8 offset2">
+            <div class="span8 offset1">
     {% block content %}
     {% endblock content %}
             </div>
         </div>
-        <div class="row">
-          <div class="span10 offset1"
-            <!-- Sponsors --!>
-            <ul class="sponsors">
-              <li>
-                <a href="http://jfdi.asia">
-                  <img src="http://jfdiasia.files.wordpress.com/2012/02/ganheader1.png">
-                </a>
-                </li>
-          </div>
-        </div>
       </div>
+        <div class="row">
+          <footer class="sponsors">
+            <div class="span10 offset1"
+              <!-- Sponsors --!>
+              <ul class="unstyled sponsors">
+                <li>
+                  <a href="http://jfdi.asia">
+                    <img src="http://jfdiasia.files.wordpress.com/2012/02/ganheader1.png">
+                  </a>
+                </li>
+            </div>
+          </footer>
+        </div>
   </body>
 </html>
