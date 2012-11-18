@@ -17,17 +17,17 @@ server {
 
     location /static {
         autoindex on;
-        alias /home/deploy/hackathon/static/;
+        alias /home/deploy/redwire/static/;
         expires max;
         access_log off;
     }
 
     location /robots.txt {
-        alias /home/deploy/hackathon/static/robots.txt;
+        alias /home/deploy/redwire/static/robots.txt;
     }
 
     location /favicon.ico {
-        alias /home/deploy/hackathon/static/favicon.ico;
+        alias /home/deploy/redwire/static/favicon.ico;
         expires max;
     }
 
