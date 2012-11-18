@@ -9,8 +9,14 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', TemplateView.as_view(template_name="index.html"), name="index"),
-    url(r'^$', TemplateView.as_view(template_name="location.html"), name="location"),
-    url(r'^$', TemplateView.as_view(template_name="contact.html"), name="contact"),
+    url(r'^$', TemplateView.as_view(template_name="index.html"),
+        kwargs={'active_view':'index'},
+        name="index"),
+    url(r'^map/$', TemplateView.as_view(template_name="location.html"),
+        kwargs={'active_view':'location'},
+        name="location"),
+    url(r'^contact/$', TemplateView.as_view(template_name="contact.html"),
+        kwargs={'active_view':'contact'},
+        name="contact"),
 
 )

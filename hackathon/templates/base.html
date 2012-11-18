@@ -1,15 +1,40 @@
+{% load url from future %}
+{% load compress %}
+{% load staticfiles %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+      {% compress css %}
+      <link type="text/less" rel="stylesheet" href="{% static 'bootstrap/less/bootstrap.less' %}">
+      {% endcompress %}
     {% block head %}
+      <title>Hackathon</title>
     {% endblock %}
   </head>
   <body>
       <div>
-      {% block title %}
-      {% endblock title %}
-      {% block content %}
-      {% endblock content %}
+        <div class="row">
+            <div class="span10 offset1">
+    {% block title %}
+                <h1>Super Blah Header</h1>
+    {% endblock title %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2">
+                <nav>
+                <ul class="nav nav-tabs nav-stacked">
+                  <li {% if params.active_view == 'index' %} class="active" {% endif %}><a href="{% url 'index' %}">Home</a></li>
+                    <li {% if params.active_view == 'location' %} class="active" {% endif %}><a href="{% url 'location' %}">Location</a></li>
+                    <li {% if params.active_view == 'contact' %} class="active" {% endif %}><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+                </nav>
+            </div>
+            <div class="span8 offset2">
+    {% block content %}
+    {% endblock content %}
+            </div>
+        </div>
       </div>
   </body>
 </html>

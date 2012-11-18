@@ -3,7 +3,7 @@
 from path import path
 
 PROJECT_ROOT = path(__file__).abspath().dirname().dirname().dirname()
-SITE_ROOT = PROJECT_ROOT.dirname().dirname()
+SITE_ROOT = PROJECT_ROOT.dirname()
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -13,8 +13,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': ':memory:',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -27,6 +27,8 @@ DATABASES = {
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
 TIME_ZONE = 'Asia/Singapore'
+
+CURRENT_PAGE_CLASS = 'active'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -69,6 +71,13 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    ('bootstrap/less', PROJECT_ROOT / 'assets/bootstrap/less'),
+    ('bootstrap/js', PROJECT_ROOT / 'assets/bootstrap/js'),
+    ('bootstrap/img', PROJECT_ROOT / 'assets/bootstrap/img'),
+    ('js', PROJECT_ROOT / 'assets/js'),
+    ('css', PROJECT_ROOT / 'assets/css'),
+    ('img', PROJECT_ROOT / 'assets/img'),
+
 )
 
 # List of finder classes that know how to find static files in
@@ -77,6 +86,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -120,7 +130,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'south',
+    'compressor',
 )
+
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile} {outfile}'),
+    )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

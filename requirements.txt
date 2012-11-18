@@ -5,3 +5,4 @@ ipdb==0.6.1
 ipython==0.12.1
 path.py==2.2.2
 pytz==2012c
+django-compressor==1.2

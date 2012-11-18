@@ -1,0 +1,3 @@
+[submodule "hackathon/assets/bootstrap"]
+	path = hackathon/assets/bootstrap
+	url = https://github.com/twitter/bootstrap.git
