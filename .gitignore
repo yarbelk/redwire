@@ -14,4 +14,4 @@
 atlassian-ide-plugin.xml
 
 # Project
-/{{ project_name }}/static/
+/static/
