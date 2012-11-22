@@ -18,5 +18,8 @@ urlpatterns = patterns('',
     url(r'^contact/$', TemplateView.as_view(template_name="contact.html"),
         kwargs={'active_view':'contact'},
         name="contact"),
+    url(r'^projects/$', TemplateView.as_view(template_name="projects.html"),
+        kwargs={'active_view':'projects'},
+        name="projects"),
 
 )

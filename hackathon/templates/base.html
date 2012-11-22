@@ -65,6 +65,7 @@
                 <nav>
                 <ul class="nav nav-tabs nav-stacked">
                   <li {% if params.active_view == 'index' %} class="active" {% endif %}><a href="{% url 'index' %}" target="_top">Home</a></li>
+                  <li {% if params.active_view == 'projects' %} class="active" {% endif %}><a href="{% url 'projects' %}" target="_top">Projects</a></li>
                   <li {% if params.active_view == 'location' %} class="active" {% endif %}><a href="{% url 'location' %}" target="_top">Location</a></li>
                   <li {% if params.active_view == 'contact' %} class="active" {% endif %}><a href="{% url 'contact' %}" target="_top">Connect</a></li>
                 </ul>
