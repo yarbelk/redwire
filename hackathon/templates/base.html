@@ -22,6 +22,17 @@
           clear: both;
           padding-top: 20px;
         }
+        #sponsors {
+          text-align: center;
+        }
+        .sponsors li img{
+          max-height: 100px;
+        }
+        .sponsors ul li{
+          display: inline;
+          padding-left: 10px;
+          padding-right:10px;
+        }
         nav {
           margin-top: 30px;
         }
@@ -82,10 +93,15 @@
       </div>
         <div class="row">
           <footer class="sponsors">
-            <div class="span10 offset1"
+            <div id="sponsors" class="span10 offset1"
               <!-- Sponsors --!>
               <h3>Sponsors</h3>
               <ul class="unstyled">
+                <li>
+                  <a href="http://mediapop.co">
+                    <img src="{% static 'img/mediapop-logo.png' %}">
+                  </a>
+                </li>
                 <li>
                   <a href="http://jfdi.asia">
                     <img src="{% static 'img/JFDI-logo.png' %}">
